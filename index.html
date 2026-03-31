@@ -1,0 +1,1319 @@
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.wrap{font-family:'Segoe UI',system-ui,sans-serif;background:#fff;width:100%;}
+.hz{height:13px;background:repeating-linear-gradient(-45deg,#6d28d9 0,#6d28d9 10px,#c4b5fd 10px,#c4b5fd 20px);}
+.hz2{height:13px;background:repeating-linear-gradient(-45deg,#4f46e5 0,#4f46e5 10px,#e0e7ff 10px,#e0e7ff 20px);}
+
+.nav-bar{background:#1e1b4b;padding:0 14px;display:flex;align-items:stretch;gap:2px;}
+.nav-tab{padding:10px 18px;font-size:12px;font-weight:700;color:#a5b4fc;cursor:pointer;border-bottom:3px solid transparent;letter-spacing:0.5px;user-select:none;}
+.nav-tab:hover{color:#e0e7ff;background:#2d2b6b;}
+.nav-tab.active{color:#fff;border-bottom-color:#fbbf24;background:#2d2b6b;}
+.nav-tab .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fbbf24;margin-right:5px;vertical-align:middle;}
+.nav-sub{background:#312e81;padding:5px 14px;font-size:10px;color:#a5b4fc;letter-spacing:1px;}
+
+.brand-bar{background:#4f46e5;padding:9px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:7px;}
+.brand-name{font-size:20px;font-weight:700;color:#fff;}
+.brand-tag{font-size:9px;color:#c4b5fd;letter-spacing:2px;}
+.bbadge{background:#6d28d9;border:1.5px solid #a78bfa;border-radius:5px;padding:4px 10px;text-align:center;}
+.bbadge-v{font-size:15px;font-weight:700;color:#fbbf24;}
+.bbadge-l{font-size:8px;color:#c4b5fd;}
+
+.sec-hdr{background:#ede9fe;border-left:4px solid #6d28d9;padding:6px 14px;font-size:11px;font-weight:700;color:#4c1d95;letter-spacing:1.5px;display:flex;align-items:center;gap:8px;border-top:1px solid #c4b5fd;border-bottom:1px solid #c4b5fd;}
+.cw{padding:11px 14px;background:#fff;}
+
+.vg{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-bottom:10px;}
+.yc{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:8px;padding:11px;}
+.yc2{background:#ecfdf5;border-color:#6ee7b7;}
+.ycl{font-size:9px;font-weight:700;color:#7c3aed;letter-spacing:1.5px;margin-bottom:3px;}
+.ycl2{color:#059669;}
+.ys{font-size:24px;font-weight:700;color:#4c1d95;line-height:1;}
+.ys2{color:#065f46;}
+.ysub{font-size:10px;color:#7c3aed;margin-top:2px;}
+.vsm{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+.vsc{width:34px;height:34px;background:#e0e7ff;border:2px solid #6d28d9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#4c1d95;}
+
+.br{display:flex;align-items:center;gap:5px;margin-bottom:5px;}
+.bl{font-size:11px;color:#4c1d95;width:78px;text-align:right;flex-shrink:0;font-weight:500;}
+.bt{flex:1;background:#ede9fe;border-radius:3px;height:13px;position:relative;overflow:hidden;}
+.bf{height:100%;border-radius:3px;position:absolute;left:0;top:0;}
+.bn{font-size:11px;font-weight:700;color:#4c1d95;width:32px;flex-shrink:0;}
+.bb{font-size:9px;font-weight:700;padding:2px 5px;border-radius:10px;flex-shrink:0;}
+.bpos{background:#d1fae5;color:#065f46;}
+.bneg{background:#fee2e2;color:#991b1b;}
+.bint{background:#fef3c7;color:#92400e;}
+.beam{height:4px;background:repeating-linear-gradient(90deg,#6d28d9 0,#6d28d9 12px,#e0e7ff 12px,#e0e7ff 24px);margin:8px 0;}
+.speech{background:#f5f3ff;border:1.5px solid #7c3aed;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:600;color:#4c1d95;display:inline-block;position:relative;}
+.speech::after{content:'';position:absolute;bottom:-7px;left:12px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #7c3aed;}
+.speech.r::after{left:auto;right:12px;}
+
+.s2{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e0e7ff;}
+.sp{padding:11px;border-right:1px solid #e0e7ff;}
+.sp:last-child{border-right:none;}
+.sr{display:flex;justify-content:space-between;padding:5px 8px;font-size:11px;font-weight:600;color:#4c1d95;border-bottom:1px solid #f3f0ff;}
+.sr:last-child{border-bottom:none;}
+.sr:nth-child(odd){background:#faf5ff;}
+.sd{color:#b91c1c;font-weight:700;}
+.ir{display:flex;align-items:flex-start;gap:7px;padding:4px 0;border-bottom:1px solid #f3f0ff;font-size:11px;color:#4c1d95;}
+.ir:last-child{border-bottom:none;}
+
+.sfoc{background:#fffbeb;border:2px solid #f59e0b;border-radius:8px;padding:11px;margin:10px 12px;}
+.pr{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.pl2{font-size:11px;color:#92400e;font-weight:600;width:150px;flex-shrink:0;}
+.ptrk{flex:1;background:#fef3c7;border-radius:3px;height:11px;position:relative;overflow:hidden;}
+.pf{height:100%;border-radius:3px;position:absolute;left:0;top:0;background:#f59e0b;}
+.pf.done{background:#10b981;}
+.pp{font-size:10px;font-weight:700;color:#92400e;width:32px;flex-shrink:0;}
+.pg2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px;}
+.pi{background:#fff;border:1.5px solid #fcd34d;border-radius:6px;padding:6px 10px;font-size:11px;color:#92400e;display:flex;align-items:center;gap:5px;}
+
+/* WAR ALERT — light style */
+.war-wrap{margin:10px 12px;border-radius:8px;overflow:hidden;border:1.5px solid #fecaca;}
+.war-hdr{background:#fff1f2;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1.5px solid #fecaca;}
+.war-hdr-icon{font-size:20px;}
+.war-hdr-title{font-size:13px;font-weight:700;color:#991b1b;letter-spacing:0.3px;}
+.war-hdr-sub{font-size:10px;color:#f87171;margin-left:auto;}
+.war-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;}
+.war-cell{padding:10px 12px;border-right:1px solid #fee2e2;border-bottom:1px solid #fee2e2;background:#fff;}
+.war-cell:nth-child(2n){border-right:none;}
+.war-cell:nth-child(3),.war-cell:nth-child(4){border-bottom:none;}
+.war-cell-title{font-size:10px;font-weight:700;letter-spacing:0.8px;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.wct-red{color:#b91c1c;}
+.wct-grn{color:#065f46;}
+.war-item{font-size:10px;color:#4b5563;margin-bottom:3px;display:flex;align-items:flex-start;gap:6px;line-height:1.4;}
+.wi-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.wi-red{background:#ef4444;}
+.wi-grn{background:#10b981;}
+.war-footer{background:#fff7ed;padding:8px 14px;border-top:1.5px solid #fed7aa;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.wf-pos{font-size:10px;font-weight:700;color:#065f46;display:flex;align-items:center;gap:5px;}
+.wf-neg{font-size:10px;font-weight:700;color:#991b1b;display:flex;align-items:center;gap:5px;}
+
+/* SVG icon circles */
+.icon-circle{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;}
+
+.cls{padding:11px 14px;}
+.cli{display:flex;align-items:center;gap:7px;padding:6px 9px;border:1.5px solid #e0e7ff;border-radius:6px;margin-bottom:5px;cursor:pointer;font-size:11px;color:#4c1d95;background:#fff;user-select:none;}
+.cli:hover{background:#f5f3ff;}
+.cli.done{background:#ecfdf5;border-color:#6ee7b7;color:#065f46;}
+.clb{width:14px;height:14px;border:2px solid #7c3aed;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#7c3aed;}
+.cli.done .clb{background:#10b981;border-color:#10b981;color:#fff;}
+.ct{margin-left:auto;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.ct1{background:#ede9fe;color:#6d28d9;}
+.ct2{background:#dbeafe;color:#1e40af;}
+.ct3{background:#d1fae5;color:#065f46;}
+
+.to{background:#4f46e5;overflow:hidden;height:28px;display:flex;align-items:center;}
+.tl{background:#6d28d9;color:#fff;font-size:10px;font-weight:700;padding:0 10px;height:28px;display:flex;align-items:center;letter-spacing:1px;flex-shrink:0;border-right:2px solid #c4b5fd;}
+.ts{flex:1;overflow:hidden;height:28px;}
+.ti2{display:inline-flex;align-items:center;height:28px;white-space:nowrap;will-change:transform;}
+.ti{font-size:10px;font-weight:600;color:#e0e7ff;padding:0 15px;display:inline-flex;align-items:center;gap:6px;}
+.td2{width:4px;height:4px;border-radius:50%;background:#a78bfa;flex-shrink:0;}
+
+.mbar{background:#f5f3ff;border-top:1px solid #c4b5fd;padding:8px 12px;display:flex;gap:7px;justify-content:center;flex-wrap:wrap;}
+.mp{background:#fff;border:1.5px solid #c4b5fd;border-radius:6px;padding:5px 10px;text-align:center;min-width:70px;}
+.mpi{font-size:16px;display:block;margin-bottom:1px;}
+.mpn{font-size:9px;font-weight:700;color:#6d28d9;}
+.mps{font-size:9px;color:#a78bfa;}
+
+.page{display:none;}
+.page.active{display:block;}
+
+.cs{padding:60px 20px;text-align:center;}
+.cs-ic{font-size:44px;margin-bottom:10px;}
+.cs h3{font-size:18px;font-weight:700;color:#4c1d95;margin-bottom:5px;}
+.cs p{font-size:12px;color:#7c3aed;}
+</style>
+
+<div class="wrap">
+
+<div class="nav-bar">
+  <img src="logo-light.webp" alt="HeadsupB2B" style="height:22px;margin-right:10px;align-self:center;flex-shrink:0;">
+  <div class="nav-tab active" onclick="switchTab('ip',this)"><span class="dot"></span>InfraPulse</div>
+  <div class="nav-tab" onclick="switchTab('pf',this)">ProductForge</div>
+  <div class="nav-tab" onclick="switchTab('er',this)">EventsRadar</div>
+  <div class="nav-tab" onclick="switchTab('bb',this)">BuildBoard</div>
+</div>
+<div class="nav-sub" id="nsub">InfraPulse — Monthly Intelligence Report · April 2026</div>
+
+<!-- INFRAPULSE -->
+<div class="page active" id="page-ip">
+
+<div class="hz"></div>
+<div class="brand-bar">
+  <div>
+    <div class="brand-name">InfraPulse</div>
+    <div class="brand-tag">MONTHLY INTELLIGENCE REPORT — APRIL 2026</div>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <div class="bbadge"><div class="bbadge-v">Rs.6.86 Cr</div><div class="bbadge-l">APR '25 REVENUE</div></div>
+    <div class="bbadge"><div class="bbadge-v">+16.5%</div><div class="bbadge-l">APRIL YoY</div></div>
+    <div class="bbadge"><div class="bbadge-v">+50.7%</div><div class="bbadge-l">Q1 FY25 GROWTH</div></div>
+  </div>
+</div>
+<div class="hz2"></div>
+
+<!-- REVENUE -->
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="7" width="3" height="6" fill="#6d28d9" rx="1"/><rect x="5.5" y="4" width="3" height="9" fill="#7c3aed" rx="1"/><rect x="10" y="1" width="3" height="12" fill="#4c1d95" rx="1"/></svg>
+  April '24 vs April '25 — Revenue by category
+</div>
+
+<div class="cw">
+  <div class="vg">
+    <div class="yc">
+      <div class="ycl">APRIL 2024</div>
+      <div class="ys">Rs.5.89</div>
+      <div class="ysub">Total revenue (Cr)</div>
+      <svg viewBox="0 0 240 70" width="100%" style="display:block;margin:8px 0 5px;position:relative;z-index:10;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+        <rect width="240" height="70" fill="#f5f3ff" rx="4"/>
+        <rect x="0" y="58" width="240" height="12" fill="#ddd6fe" rx="2"/>
+        <rect x="8" y="48" width="224" height="11" fill="#374151" rx="2"/>
+        <rect x="26" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="60" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="94" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="128" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="162" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="196" y="52" width="14" height="3" fill="#fbbf24" rx="1"/>
+        <rect x="8" y="40" width="224" height="8" fill="#dc2626" rx="3"/>
+        <rect x="8" y="31" width="224" height="5" fill="#ef4444" rx="2"/>
+        <rect x="18" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="50" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="82" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="114" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="146" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="178" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="210" y="28" width="5" height="21" fill="#9ca3af" rx="1"/>
+        <rect x="10" y="16" width="46" height="7" fill="#374151" rx="1"/>
+        <rect x="10" y="9" width="46" height="6" fill="#4b5563" rx="1"/>
+        <rect x="10" y="3" width="46" height="5" fill="#374151" rx="1"/>
+        <rect x="10" y="3" width="46" height="2" fill="#9ca3af" rx="1"/>
+        <!-- Text group on top of everything -->
+        <g style="isolation:isolate;">
+          <rect x="100" y="2" width="138" height="30" fill="#f5f3ff" rx="3"/>
+          <text x="168" y="12" text-anchor="middle" font-size="7" font-weight="700" fill="#4c1d95" font-family="Segoe UI,sans-serif">Road Safety dominant</text>
+          <text x="168" y="20" text-anchor="middle" font-size="6" fill="#7c3aed" font-family="Segoe UI,sans-serif">Rs.4.76 Cr · 81% share</text>
+          <text x="130" y="29" font-size="6" fill="#4c1d95" font-family="Segoe UI,sans-serif">Rs.4.76</text>
+          <text x="180" y="29" font-size="6" fill="#7c3aed" font-family="Segoe UI,sans-serif">Rs.0.85</text>
+        </g>
+      </svg>
+      <div class="br"><span class="bl">Road Safety</span><div class="bt"><div class="bf" style="width:81%;background:#6d28d9;"></div></div><span class="bn">4.76</span></div>
+      <div class="br"><span class="bl">Metals</span><div class="bt"><div class="bf" style="width:14%;background:#8b5cf6;"></div></div><span class="bn">0.85</span></div>
+    </div>
+
+    <div class="vsm">
+      <div class="vsc">VS</div>
+      <div style="font-size:11px;font-weight:700;color:#059669;">+16.5%</div>
+      <div style="font-size:9px;color:#7c3aed;text-align:center;">Apr growth</div>
+    </div>
+
+    <div class="yc yc2">
+      <div class="ycl ycl2">APRIL 2025</div>
+      <div class="ys ys2">Rs.6.86</div>
+      <div class="ysub" style="color:#059669;">Total revenue (Cr)</div>
+      <svg viewBox="0 0 240 70" width="100%" style="display:block;margin:8px 0 5px;" xmlns="http://www.w3.org/2000/svg">
+        <rect width="240" height="70" fill="#ecfdf5" rx="4"/>
+        <!-- Road -->
+        <rect x="3" y="3" width="54" height="64" fill="#f5f3ff" rx="4"/>
+        <rect x="8" y="34" width="44" height="9" fill="#374151" rx="1"/>
+        <rect x="8" y="27" width="44" height="7" fill="#dc2626" rx="2"/>
+        <rect x="8" y="21" width="44" height="5" fill="#ef4444" rx="1"/>
+        <rect x="12" y="18" width="4" height="18" fill="#9ca3af" rx="1"/>
+        <rect x="25" y="18" width="4" height="18" fill="#9ca3af" rx="1"/>
+        <rect x="38" y="18" width="4" height="18" fill="#9ca3af" rx="1"/>
+        <rect x="16" y="29" width="6" height="2" fill="#fbbf24" rx="1"/>
+        <rect x="30" y="29" width="6" height="2" fill="#fbbf24" rx="1"/>
+        <text x="30" y="12" text-anchor="middle" font-size="7.5" font-weight="700" fill="#4c1d95" font-family="Segoe UI,sans-serif">Road</text>
+        <text x="30" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="#7c3aed" font-family="Segoe UI,sans-serif">3.20</text>
+        <!-- Metals -->
+        <rect x="61" y="3" width="54" height="64" fill="#f5f3ff" rx="4"/>
+        <rect x="66" y="32" width="44" height="8" fill="#374151" rx="1"/>
+        <rect x="66" y="24" width="44" height="7" fill="#4b5563" rx="1"/>
+        <rect x="66" y="17" width="44" height="6" fill="#374151" rx="1"/>
+        <rect x="66" y="17" width="44" height="2" fill="#9ca3af" rx="1"/>
+        <text x="88" y="12" text-anchor="middle" font-size="7.5" font-weight="700" fill="#065f46" font-family="Segoe UI,sans-serif">Metals</text>
+        <text x="88" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="#059669" font-family="Segoe UI,sans-serif">2.05</text>
+        <!-- Electricals -->
+        <rect x="119" y="3" width="54" height="64" fill="#dbeafe" rx="4"/>
+        <polygon points="151,13 142,32 149,32 140,52 160,29 152,29" fill="#fbbf24"/>
+        <text x="146" y="11" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1e40af" font-family="Segoe UI,sans-serif">Electrics</text>
+        <text x="146" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="#1d4ed8" font-family="Segoe UI,sans-serif">0.74</text>
+        <!-- Solar -->
+        <rect x="177" y="3" width="60" height="64" fill="#fef3c7" rx="4"/>
+        <circle cx="207" cy="19" r="9" fill="#fbbf24"/>
+        <line x1="207" y1="7" x2="207" y2="5" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="207" y1="31" x2="207" y2="33" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="195" y1="19" x2="193" y2="19" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="219" y1="19" x2="221" y2="19" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="198" y1="10" x2="196" y2="8" stroke="#fbbf24" stroke-width="1.5"/>
+        <line x1="216" y1="10" x2="218" y2="8" stroke="#fbbf24" stroke-width="1.5"/>
+        <line x1="198" y1="28" x2="196" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+        <line x1="216" y1="28" x2="218" y2="30" stroke="#fbbf24" stroke-width="1.5"/>
+        <rect x="182" y="35" width="23" height="15" fill="#1e40af" rx="1"/>
+        <rect x="206" y="35" width="28" height="15" fill="#1d4ed8" rx="1"/>
+        <line x1="193" y1="35" x2="193" y2="50" stroke="#93c5fd" stroke-width="0.8"/>
+        <line x1="182" y1="42" x2="205" y2="42" stroke="#93c5fd" stroke-width="0.8"/>
+        <line x1="206" y1="42" x2="234" y2="42" stroke="#93c5fd" stroke-width="0.8"/>
+        <text x="207" y="11" text-anchor="middle" font-size="7.5" font-weight="700" fill="#92400e" font-family="Segoe UI,sans-serif">Solar</text>
+        <text x="207" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="#b45309" font-family="Segoe UI,sans-serif">0.71</text>
+      </svg>
+      <div class="br"><span class="bl">Road Safety</span><div class="bt"><div class="bf" style="width:47%;background:#6d28d9;"></div></div><span class="bn">3.20</span><span class="bb bneg">-33%</span></div>
+      <div class="br"><span class="bl">Metals</span><div class="bt"><div class="bf" style="width:30%;background:#059669;"></div></div><span class="bn">2.05</span><span class="bb bpos">+141%</span></div>
+      <div class="br"><span class="bl">Electricals</span><div class="bt"><div class="bf" style="width:11%;background:#3b82f6;"></div></div><span class="bn">0.74</span><span class="bb bint">SCALED</span></div>
+      <div class="br"><span class="bl">Solar</span><div class="bt"><div class="bf" style="width:10%;background:#f59e0b;"></div></div><span class="bn">0.71</span><span class="bb bint">NEW</span></div>
+      <div style="margin-top:8px;text-align:right;"><div class="speech r">Four pillars — diversified!</div></div>
+    </div>
+  </div>
+
+  <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:6px;padding:7px 12px;margin-bottom:8px;font-size:11px;color:#92400e;display:flex;gap:7px;align-items:flex-start;">
+    <span style="font-size:13px;flex-shrink:0;">☀️</span>
+    <div><strong>Solar introduced in April '25</strong> — our newest category. Electricals scaled significantly. Together, Renewables added <strong>Rs.1.45 Cr</strong> fresh revenue.</div>
+  </div>
+
+  <div class="beam"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;">
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:3px;">ROAD SAFETY</div><div style="font-size:12px;font-weight:700;color:#4c1d95;">4.76 → 3.20</div><span class="bb bneg" style="display:inline-block;margin-top:3px;">-32.8%</span></div>
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:3px;">METALS</div><div style="font-size:12px;font-weight:700;color:#065f46;">0.85 → 2.05</div><span class="bb bpos" style="display:inline-block;margin-top:3px;">+141%</span></div>
+    <div style="background:#eff6ff;border:1.5px solid #93c5fd;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#1e40af;margin-bottom:3px;">ELECTRICALS</div><div style="font-size:12px;font-weight:700;color:#1e40af;">0 → 0.74</div><span class="bb bint" style="display:inline-block;margin-top:3px;">SCALED UP</span></div>
+    <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#92400e;margin-bottom:3px;">SOLAR</div><div style="font-size:12px;font-weight:700;color:#92400e;">0 → 0.71</div><span class="bb bint" style="display:inline-block;margin-top:3px;">INTRODUCED</span></div>
+  </div>
+</div>
+
+<!-- MARGIN -->
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M2 2l10 10" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round"/></svg>
+  April '24 vs April '25 — Gross margin
+</div>
+<div class="cw">
+  <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:9px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <div style="text-align:center;"><div style="font-size:9px;font-weight:700;color:#7c3aed;margin-bottom:2px;">APR '24 MARGIN</div><div style="font-size:20px;font-weight:700;color:#4c1d95;">Rs.0.23 Cr</div><div style="font-size:9px;color:#7c3aed;">3.9% of revenue</div></div>
+    <div style="text-align:center;"><div style="font-size:18px;color:#6d28d9;">→</div><div style="font-size:10px;font-weight:700;color:#059669;">+3.4%</div></div>
+    <div style="text-align:center;"><div style="font-size:9px;font-weight:700;color:#059669;margin-bottom:2px;">APR '25 MARGIN</div><div style="font-size:20px;font-weight:700;color:#065f46;">Rs.0.24 Cr</div><div style="font-size:9px;color:#059669;">3.5% of revenue</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;">
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:9px;">
+      <div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:4px;">ROAD SAFETY</div>
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px;"><span style="font-size:9px;color:#7c3aed;width:30px;flex-shrink:0;">'24</span><div style="flex:1;background:#ede9fe;border-radius:2px;height:10px;position:relative;overflow:hidden;"><div style="width:60%;height:100%;background:#7c3aed;position:absolute;"></div></div><span style="font-size:9px;font-weight:700;color:#4c1d95;width:26px;">0.14</span></div>
+      <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:9px;color:#059669;width:30px;flex-shrink:0;">'25</span><div style="flex:1;background:#ede9fe;border-radius:2px;height:10px;position:relative;overflow:hidden;"><div style="width:47%;height:100%;background:#059669;position:absolute;"></div></div><span style="font-size:9px;font-weight:700;color:#065f46;width:26px;">0.11</span></div>
+      <span class="bb bneg" style="display:inline-block;margin-top:5px;">-21.2%</span>
+    </div>
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:9px;">
+      <div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:4px;">METALS</div>
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px;"><span style="font-size:9px;color:#7c3aed;width:30px;flex-shrink:0;">'24</span><div style="flex:1;background:#ede9fe;border-radius:2px;height:10px;position:relative;overflow:hidden;"><div style="width:13%;height:100%;background:#7c3aed;position:absolute;"></div></div><span style="font-size:9px;font-weight:700;color:#4c1d95;width:26px;">0.03</span></div>
+      <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:9px;color:#059669;width:30px;flex-shrink:0;">'25</span><div style="flex:1;background:#ede9fe;border-radius:2px;height:10px;position:relative;overflow:hidden;"><div style="width:25%;height:100%;background:#059669;position:absolute;"></div></div><span style="font-size:9px;font-weight:700;color:#065f46;width:26px;">0.06</span></div>
+      <span class="bb bpos" style="display:inline-block;margin-top:5px;">+100%</span>
+    </div>
+    <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:7px;padding:9px;">
+      <div style="font-size:9px;font-weight:700;color:#92400e;margin-bottom:4px;">RENEWABLES</div>
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px;"><span style="font-size:9px;color:#b45309;width:30px;flex-shrink:0;">'24</span><div style="flex:1;background:#fef3c7;border-radius:2px;height:10px;"></div><span style="font-size:9px;font-weight:700;color:#92400e;width:26px;">—</span></div>
+      <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:9px;color:#059669;width:30px;flex-shrink:0;">'25</span><div style="flex:1;background:#fef3c7;border-radius:2px;height:10px;position:relative;overflow:hidden;"><div style="width:25%;height:100%;background:#f59e0b;position:absolute;"></div></div><span style="font-size:9px;font-weight:700;color:#92400e;width:26px;">0.06</span></div>
+      <span class="bb bint" style="display:inline-block;margin-top:5px;">FIRST MARGIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q1 -->
+<div class="hz"></div>
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" fill="#6d28d9" rx="1"/><rect x="8" y="1" width="5" height="5" fill="#c4b5fd" rx="1"/><rect x="1" y="8" width="5" height="5" fill="#c4b5fd" rx="1"/><rect x="8" y="8" width="5" height="5" fill="#6d28d9" rx="1"/></svg>
+  Q1 FY2024 vs Q1 FY2025 — Quarterly performance
+</div>
+<div class="cw">
+  <div class="vg" style="margin-bottom:9px;">
+    <div class="yc"><div class="ycl">Q1 FY2024 (Apr–Jun)</div><div class="ys" style="font-size:22px;">Rs.19.34</div><div class="ysub">2 active categories</div></div>
+    <div class="vsm"><div class="vsc" style="font-size:10px;">VS</div><div style="font-size:11px;font-weight:700;color:#059669;">+50.7%</div></div>
+    <div class="yc yc2"><div class="ycl ycl2">Q1 FY2025 (Apr–Jun)</div><div class="ys ys2" style="font-size:22px;">Rs.29.14</div><div class="ysub" style="color:#059669;">4+ active categories</div></div>
+  </div>
+  <div style="display:flex;gap:12px;margin-bottom:7px;font-size:10px;color:#6d28d9;">
+    <span style="display:flex;align-items:center;gap:3px;"><span style="width:8px;height:8px;background:#6d28d9;display:inline-block;border-radius:2px;"></span>Q1 FY24</span>
+    <span style="display:flex;align-items:center;gap:3px;"><span style="width:8px;height:8px;background:#059669;display:inline-block;border-radius:2px;"></span>Q1 FY25</span>
+  </div>
+  <div id="qchart"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:9px;">
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:3px;">ROAD SAFETY</div><div style="font-size:12px;font-weight:700;color:#4c1d95;">11.14 → 14.79</div><span class="bb bpos" style="display:inline-block;margin-top:3px;">+32.8%</span></div>
+    <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#6d28d9;margin-bottom:3px;">METALS</div><div style="font-size:12px;font-weight:700;color:#065f46;">6.26 → 7.74</div><span class="bb bpos" style="display:inline-block;margin-top:3px;">+23.6%</span></div>
+    <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:7px;padding:8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#92400e;margin-bottom:3px;">RENEWABLES</div><div style="font-size:12px;font-weight:700;color:#92400e;">0 → 2.04</div><span class="bb bint" style="display:inline-block;margin-top:3px;">INTRODUCED</span></div>
+  </div>
+</div>
+
+<!-- MARKET INTEL -->
+<div class="hz2"></div>
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#6d28d9" stroke-width="1.5"/><path d="M7 4v3.5l2.5 1.5" stroke="#6d28d9" stroke-width="1.5" stroke-linecap="round"/></svg>
+  April '26 market intel
+</div>
+<div class="s2">
+  <div class="sp">
+    <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;margin-bottom:8px;color:#b91c1c;display:flex;align-items:center;gap:5px;">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1L11 10H1L6 1Z" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/><text x="6" y="9" text-anchor="middle" font-size="6" font-weight="700" fill="#991b1b">!</text></svg>
+      ELECTION FREEZE — 5 STATES
+    </div>
+    <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:6px;overflow:hidden;margin-bottom:8px;">
+      <div style="display:flex;padding:4px 8px;background:#b91c1c;font-size:9px;font-weight:700;color:#fff;"><span>STATE</span><span style="margin-left:auto;">POLL DATE</span></div>
+      <div class="sr"><span style="color:#7c1d1d;">West Bengal</span><span class="sd">Apr 23 &amp; 29</span></div>
+      <div class="sr"><span style="color:#7c1d1d;">Tamil Nadu</span><span class="sd">Apr 23</span></div>
+      <div class="sr"><span style="color:#7c1d1d;">Kerala</span><span class="sd">Apr 9</span></div>
+      <div class="sr"><span style="color:#7c1d1d;">Assam</span><span class="sd">Apr 9</span></div>
+      <div class="sr"><span style="color:#7c1d1d;">Puducherry</span><span class="sd">Apr 9</span></div>
+    </div>
+    <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:6px;padding:7px;font-size:11px;color:#7c1d1d;font-weight:600;">~40% of state capex frozen — pivot to central</div>
+  </div>
+  <div class="sp">
+    <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;margin-bottom:8px;color:#065f46;display:flex;align-items:center;gap:5px;">
+      <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#d1fae5" stroke="#10b981" stroke-width="1"/><path d="M3.5 6l2 2 3-3" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      CENTRAL ACCELERATOR
+    </div>
+    <div style="font-size:10px;color:#065f46;font-weight:600;margin-bottom:7px;">Rs. 12.2 Trillion Capex (+11.4% YoY)</div>
+    <div class="ir"><span style="font-size:13px;flex-shrink:0;">🛣️</span><div><strong style="font-size:11px;color:#065f46;">NHAI expressways</strong><div style="font-size:10px;color:#4c1d95;">Rs.57 Cr+ pipeline</div></div></div>
+    <div class="ir"><span style="font-size:13px;flex-shrink:0;">🚂</span><div><strong style="font-size:11px;color:#065f46;">Vande Bharat 7 corridors</strong><div style="font-size:10px;color:#4c1d95;">Electricals + signaling</div></div></div>
+    <div class="ir"><span style="font-size:13px;flex-shrink:0;">☀️</span><div><strong style="font-size:11px;color:#065f46;">Solar tax holidays</strong><div style="font-size:10px;color:#4c1d95;">Battery storage incentives</div></div></div>
+    <div class="ir"><span style="font-size:13px;flex-shrink:0;">📋</span><div><strong style="font-size:11px;color:#065f46;">300+ live tenders</strong><div style="font-size:10px;color:#4c1d95;">NH-27 Bihar closes soon</div></div></div>
+  </div>
+</div>
+
+<!-- SOLAR FOCUS -->
+<div class="hz2"></div>
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="3" fill="#fbbf24"/><path d="M7 1v2M7 11v2M1 7h2M11 7h2M3 3l1.4 1.4M9.6 9.6L11 11M11 3l-1.4 1.4M4.4 9.6L3 11" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/></svg>
+  April '26 focus — solar domination
+</div>
+<div class="sfoc">
+  <div style="font-size:13px;font-weight:700;color:#92400e;margin-bottom:9px;display:flex;align-items:center;gap:6px;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="4" fill="#fbbf24"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M10.6 10.6L12 12M12 3l-1.5 1.5M4.4 10.6L3 12" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Our solar research progress
+  </div>
+  <div class="pr"><span class="pl2">PM Surya Ghar Yojana</span><div class="ptrk"><div class="pf done" style="width:90%;"></div></div><span class="pp">90%</span><span style="font-size:10px;width:14px;">✅</span></div>
+  <div class="pr"><span class="pl2">PM Kusum network</span><div class="ptrk"><div class="pf done" style="width:100%;"></div></div><span class="pp">100%</span><span style="font-size:10px;width:14px;">✅</span></div>
+  <div class="pr"><span class="pl2">State solar policies</span><div class="ptrk"><div class="pf done" style="width:100%;"></div></div><span class="pp">100%</span><span style="font-size:10px;width:14px;">✅</span></div>
+  <div class="pr"><span class="pl2">BESS research</span><div class="ptrk"><div class="pf done" style="width:80%;"></div></div><span class="pp">80%</span><span style="font-size:10px;width:14px;">✅</span></div>
+  <div class="pr"><span class="pl2">Copper alternatives</span><div class="ptrk"><div class="pf done" style="width:85%;"></div></div><span class="pp">85%</span><span style="font-size:10px;width:14px;">✅</span></div>
+  <div style="font-size:9px;font-weight:700;color:#92400e;letter-spacing:1.5px;margin:8px 0 5px;">POLICY TAILWINDS</div>
+  <div class="pg2">
+    <div class="pi"><span style="font-size:12px;">☀️</span>Solar tax holidays active</div>
+    <div class="pi"><span style="font-size:12px;">🔋</span>Energy storage incentives</div>
+    <div class="pi"><span style="font-size:12px;">⚡</span>NHAI single-window clearance</div>
+    <div class="pi"><span style="font-size:12px;">🚂</span>Vande Bharat ancillaries</div>
+  </div>
+</div>
+
+<!-- WAR IMPACT — light background, AFTER solar -->
+<div class="war-wrap">
+  <div class="war-hdr">
+    <div class="war-hdr-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" fill="#fff1f2" stroke="#fca5a5" stroke-width="1.5"/><path d="M11 6v6M11 15v1" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div>
+      <div class="war-hdr-title">USA–ISRAEL WAR → LPG Crisis: Construction Impact</div>
+      <div style="font-size:10px;color:#f87171;margin-top:1px;">Middle East supply chain alert · April 2026</div>
+    </div>
+    <div style="margin-left:auto;background:#fef2f2;border:1px solid #fecaca;border-radius:5px;padding:4px 10px;text-align:center;">
+      <div style="font-size:13px;font-weight:700;color:#ef4444;">+22%</div>
+      <div style="font-size:8px;color:#f87171;">LPG price spike</div>
+    </div>
+  </div>
+  <div class="war-grid">
+    <div class="war-cell">
+      <div class="war-cell-title wct-red">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="7" width="10" height="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1" rx="1"/><path d="M4 7V5a3 3 0 016 0v2" stroke="#ef4444" stroke-width="1.2"/></svg>
+        Steel / TMT / Barriers — Critical
+      </div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>LPG Rs.1,200 → Rs.1,500/cyl · Red Sea reroutes</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Annealing furnaces: 40% fuel short → TMT -25%</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Galvanizing gas cost 2× → margins -10–15%</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Small mills (70% TMT supply): night shifts halted</div>
+    </div>
+    <div class="war-cell">
+      <div class="war-cell-title wct-grn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" fill="#d1fae5" stroke="#10b981" stroke-width="1"/><path d="M4 7.5L6 9.5L10 5" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Biomass / Briquette — Opportunity
+      </div>
+      <div class="war-item"><span class="wi-dot wi-grn"></span>Brick kilns switching LPG → Biomass: +20% demand</div>
+      <div class="war-item"><span class="wi-dot wi-grn"></span>Factory canteens Tier-2/3: briquette burners up</div>
+      <div class="war-item"><span class="wi-dot wi-grn"></span>Construction camp kitchens: bulk orders +18%</div>
+      <div class="war-item"><span class="wi-dot wi-grn"></span>Industrial allocation cut 35% → biomass fills gap</div>
+    </div>
+    <div class="war-cell" style="border-bottom:none;">
+      <div class="war-cell-title wct-red">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="3" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/><rect x="3" y="9" width="8" height="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" rx="1"/></svg>
+        Solar Assembly — Supply Hit
+      </div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Lamination ovens (EVA): LPG short → -15% output</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Rooftop installation: gas rationing → delays</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Soldering stations: flux slowed 10–12 days</div>
+    </div>
+    <div class="war-cell" style="border-bottom:none;">
+      <div class="war-cell-title wct-red">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="5" width="10" height="7" fill="#fee2e2" stroke="#ef4444" stroke-width="1" rx="1"/><path d="M1 5l6-4 6 4" stroke="#ef4444" stroke-width="1" stroke-linejoin="round"/></svg>
+        NHAI Projects — Execution Delays
+      </div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Bitumen heating plants: 30% capacity cut</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>Crash barrier install: torch rationing → 7–10 days</div>
+      <div class="war-item"><span class="wi-dot wi-red"></span>US sanctions on Iran LPG · 4–6 week shipping delays</div>
+    </div>
+  </div>
+  <div class="war-footer">
+    <div class="wf-pos">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 6l4-4 4 4" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Biomass = Immediate revenue (+20% demand)
+    </div>
+    <div class="wf-neg">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Steel / Solar = Supply constraints (-20% capacity)
+    </div>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<div class="cls">
+  <div style="font-size:9px;font-weight:700;color:#6d28d9;letter-spacing:1.5px;margin-bottom:7px;">APRIL '26 ACTION CHECKLIST</div>
+  <div id="cl">
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>NHAI 300+ bids — NH-27 Bihar closes soon</span><span class="ct ct1">URGENT</span></div>
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>Solar scale-up — Rajasthan + Jharkhand 40MW</span><span class="ct ct1">URGENT</span></div>
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>Central pivot — NHAI + Railways focus till May</span><span class="ct ct2">HIGH</span></div>
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>BESS contracts — technology shortlist ready</span><span class="ct ct2">HIGH</span></div>
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>Vande Bharat electricals — all 7 corridors</span><span class="ct ct3">PIPELINE</span></div>
+    <div class="cli" onclick="ck(this)"><div class="clb">✓</div><span>Copper alternatives — domestic sourcing locked</span><span class="ct ct3">PIPELINE</span></div>
+  </div>
+  <div id="ckmsg" style="font-size:11px;color:#a78bfa;text-align:center;margin-top:5px;">Click each item to mark deployed</div>
+</div>
+
+<div style="background:#4f46e5;padding:11px;text-align:center;">
+  <div style="font-size:17px;font-weight:700;color:#fff;">April '26 = Solar-first. Rs. 300 Cr FY26 target.</div>
+  <div style="font-size:11px;color:#c4b5fd;margin-top:3px;">InfraPulse · Monthly Intelligence Report</div>
+</div>
+
+<div class="to">
+  <div class="tl">BREAKING</div>
+  <div class="ts"><div class="ti2" id="ticker">
+    <span class="ti"><span class="td2"></span>PM Surya Ghar: 90% vendor outreach complete</span>
+    <span class="ti"><span class="td2"></span>PM Kusum suppliers locked</span>
+    <span class="ti"><span class="td2"></span>5-state election freeze — NHAI solar pipeline activated</span>
+    <span class="ti"><span class="td2"></span>State solar policies mapped</span>
+    <span class="ti"><span class="td2"></span>BESS technology shortlist ready</span>
+    <span class="ti"><span class="td2"></span>LPG +22% — Biomass demand surge +20%</span>
+    <span class="ti"><span class="td2"></span>TMT output -25% due to LPG shortage</span>
+    <span class="ti"><span class="td2"></span>300+ NHAI tenders live — NH-27 Bihar closes soon</span>
+    <span class="ti"><span class="td2"></span>Rs. 300 Cr FY26 target on track</span>
+  </div></div>
+</div>
+
+<div class="mbar">
+  <div class="mp"><span class="mpi">🪨</span><span class="mpn">CRASH CARTER</span><span class="mps">Still leads</span></div>
+  <div class="mp"><span class="mpi">💪</span><span class="mpn">TMT TITAN</span><span class="mps">+141% Apr</span></div>
+  <div class="mp"><span class="mpi">☀️</span><span class="mpn">SOLAR SAMMY</span><span class="mps">Apr '26 focus</span></div>
+  <div class="mp"><span class="mpi">⚡</span><span class="mpn">ELECTRO EDDIE</span><span class="mps">Scaled up</span></div>
+</div>
+<div class="hz2"></div>
+
+</div><!-- /infrapulse -->
+
+<!-- ======== Suraj Code Start (ProductForge — All CSS, HTML, JS) ======== -->
+<style>
+/* Category cards grid */
+.pf-cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px;}
+.pf-cat-card{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:10px;padding:18px;cursor:pointer;transition:0.2s;}
+.pf-cat-card:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(109,40,217,0.12);}
+.pf-cat-icon{font-size:32px;margin-bottom:8px;}
+.pf-cat-name{font-size:15px;font-weight:700;color:#4c1d95;margin-bottom:3px;}
+.pf-cat-sub{font-size:11px;color:#7c3aed;margin-bottom:8px;}
+.pf-cat-badge{display:inline-block;font-size:10px;font-weight:700;color:#4c1d95;border:1.5px solid #c4b5fd;border-radius:4px;padding:2px 8px;letter-spacing:0.5px;}
+
+/* Back button */
+.pf-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#6d28d9;border:1.5px solid #c4b5fd;border-radius:6px;padding:6px 14px;cursor:pointer;background:#fff;transition:0.15s;}
+.pf-back:hover{background:#f5f3ff;}
+
+/* Level + PDF split view */
+.pf-split{display:flex;height:calc(100vh - 190px);overflow:hidden;}
+.pf-left{width:320px;min-width:280px;border-right:1.5px solid #c4b5fd;background:#faf5ff;overflow-y:auto;flex-shrink:0;padding:12px;}
+.pf-right{flex:1;overflow:hidden;background:#f5f3ff;display:flex;flex-direction:column;}
+
+/* Level cards in left panel */
+.pf-lv-card{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;transition:0.2s;}
+.pf-lv-card:hover{transform:scale(1.02);box-shadow:0 3px 12px rgba(109,40,217,0.1);}
+.pf-lv-card.active{background:#ede9fe;border-color:#6d28d9;box-shadow:0 3px 12px rgba(109,40,217,0.15);}
+.pf-lv-badge{display:inline-block;font-size:10px;font-weight:700;color:#fff;background:#6d28d9;border-radius:4px;padding:3px 10px;margin-bottom:8px;letter-spacing:0.3px;}
+.pf-lv-title{font-size:14px;font-weight:700;color:#4c1d95;margin-bottom:4px;}
+.pf-lv-cta{font-size:11px;color:#7c3aed;}
+
+/* Empty state */
+.pf-empty{display:flex;align-items:center;justify-content:center;flex:1;text-align:center;padding:40px;}
+
+/* Ticker */
+.pf-ticker-wrap{background:#4f46e5;overflow:hidden;height:28px;display:flex;align-items:center;}
+.pf-ticker-label{background:#6d28d9;color:#fff;font-size:10px;font-weight:700;padding:0 10px;height:28px;display:flex;align-items:center;letter-spacing:1px;flex-shrink:0;border-right:2px solid #c4b5fd;}
+.pf-ticker-scroll{flex:1;overflow:hidden;height:28px;}
+.pf-ticker-inner{display:inline-flex;align-items:center;height:28px;white-space:nowrap;will-change:transform;}
+.pf-ticker-item{font-size:10px;font-weight:600;color:#e0e7ff;padding:0 15px;display:inline-flex;align-items:center;gap:6px;}
+.pf-ticker-dot{width:4px;height:4px;border-radius:50%;background:#fbbf24;flex-shrink:0;}
+</style>
+
+<div class="page" id="page-pf">
+
+<!-- HEADER -->
+<div class="hz"></div>
+<div class="brand-bar" style="justify-content:space-between;">
+  <div>
+    <div class="brand-name">ProductForge</div>
+    <div class="brand-tag">HEADSUP B2B — PRODUCT LEARNING SYSTEM</div>
+  </div>
+  <div style="display:flex;gap:6px;">
+    <div class="bbadge"><div class="bbadge-v" id="pf-cat-count">0</div><div class="bbadge-l">CATEGORIES</div></div>
+    <div class="bbadge"><div class="bbadge-v" id="pf-level-count">0</div><div class="bbadge-l">TOTAL LEVELS</div></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="pf-ticker-wrap">
+  <div class="pf-ticker-label">LEARN</div>
+  <div class="pf-ticker-scroll"><div class="pf-ticker-inner" id="pf-ticker"></div></div>
+</div>
+
+<!-- CATEGORY VIEW -->
+<div id="pf-view-cats">
+  <div class="sec-hdr" style="border-top:none;">
+    <span style="font-size:13px;">📚</span>
+    SELECT A PRODUCT CATEGORY
+  </div>
+  <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:6px;padding:8px 14px;margin:12px 16px 0;font-size:12px;color:#92400e;display:flex;gap:8px;align-items:center;">
+    <span style="font-size:14px;">💡</span>
+    Click any category to explore its ProductForge learning levels — from fundamentals to advanced procurement knowledge.
+  </div>
+  <div class="pf-cat-grid" id="pf-cat-grid"></div>
+</div>
+
+<!-- LEVEL + PDF SPLIT VIEW (hidden by default) -->
+<div id="pf-view-split" style="display:none;">
+  <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:#ede9fe;border-bottom:1.5px solid #c4b5fd;">
+    <div class="pf-back" id="pf-back-btn">← Back to Categories</div>
+    <div style="font-size:13px;font-weight:700;color:#4c1d95;" id="pf-split-title"></div>
+  </div>
+  <div class="pf-split">
+    <!-- LEFT: Level cards -->
+    <div class="pf-left">
+      <div style="font-size:9px;font-weight:700;color:#6d28d9;letter-spacing:1.5px;margin-bottom:10px;" id="pf-left-header">ALL LEVELS</div>
+      <div id="pf-level-list"></div>
+    </div>
+    <!-- RIGHT: PDF viewer -->
+    <div class="pf-right">
+      <div id="pf-right-empty" class="pf-empty">
+        <div>
+          <div style="font-size:40px;margin-bottom:10px;">📄</div>
+          <div style="font-size:14px;font-weight:700;color:#4c1d95;">Select a level to view</div>
+          <div style="font-size:11px;color:#7c3aed;margin-top:4px;">Click any level on the left</div>
+        </div>
+      </div>
+      <div id="pf-right-viewer" style="display:none;flex:1;flex-direction:column;overflow:hidden;">
+        <div style="padding:8px 14px;background:#fff;border-bottom:1px solid #e0e7ff;flex-shrink:0;">
+          <div id="pf-pdf-title" style="font-size:12px;font-weight:700;color:#4c1d95;"></div>
+        </div>
+        <iframe id="pf-viewer-frame" style="flex:1;width:100%;border:none;background:#fff;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="pdfdata/data.js"></script>
+<script>
+(function() {
+  var currentCat = null;
+
+  function updateStats() {
+    var keys = Object.keys(pfFolders);
+    var total = 0;
+    keys.forEach(function(k) { total += pfFolders[k].pages.length; });
+    document.getElementById('pf-cat-count').textContent = keys.length;
+    document.getElementById('pf-level-count').textContent = total;
+  }
+
+  function buildTicker() {
+    var el = document.getElementById('pf-ticker');
+    var html = '';
+    Object.keys(pfFolders).forEach(function(k) {
+      var f = pfFolders[k];
+      html += '<span class="pf-ticker-item"><span class="pf-ticker-dot"></span>' + f.label + ' — ' + f.subtitle + '</span>';
+    });
+    el.innerHTML = html + html;
+    var pos = 0;
+    var clone = el.cloneNode(true);
+    clone.id = '';
+    el.parentNode.appendChild(clone);
+    var w = el.scrollWidth;
+    function tick() {
+      pos += 0.5;
+      if (pos >= w) pos = 0;
+      el.style.transform = 'translateX(-' + pos + 'px)';
+      clone.style.transform = 'translateX(' + (w - pos) + 'px)';
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function buildCategories() {
+    var grid = document.getElementById('pf-cat-grid');
+    grid.innerHTML = '';
+    Object.keys(pfFolders).forEach(function(k) {
+      var f = pfFolders[k];
+      var card = document.createElement('div');
+      card.className = 'pf-cat-card';
+      card.innerHTML =
+        '<div class="pf-cat-icon">' + f.icon + '</div>' +
+        '<div class="pf-cat-name">' + f.label + '</div>' +
+        '<div class="pf-cat-sub">' + f.subtitle + '</div>' +
+        '<div class="pf-cat-badge">' + f.pages.length + ' LEVELS</div>';
+      card.addEventListener('click', function() { openCategory(k); });
+      grid.appendChild(card);
+    });
+  }
+
+  function openCategory(key) {
+    currentCat = key;
+    var f = pfFolders[key];
+
+    document.getElementById('pf-view-cats').style.display = 'none';
+    document.getElementById('pf-view-split').style.display = 'block';
+
+    document.getElementById('pf-split-title').textContent = f.icon + ' ' + f.label + ' — All Levels';
+    document.getElementById('pf-left-header').textContent = f.label.toUpperCase() + ' — ' + f.pages.length + ' LEVELS';
+
+    // Reset right side
+    document.getElementById('pf-right-empty').style.display = 'flex';
+    document.getElementById('pf-right-viewer').style.display = 'none';
+
+    // Build level list
+    var list = document.getElementById('pf-level-list');
+    list.innerHTML = '';
+    f.pages.forEach(function(pg) {
+      var card = document.createElement('div');
+      card.className = 'pf-lv-card';
+      card.innerHTML =
+        '<div class="pf-lv-badge">' + pg.label.toUpperCase() + '</div>' +
+        '<div class="pf-lv-title">' + pg.label + '</div>' +
+        '<div class="pf-lv-cta">📄 Click to view</div>';
+      card.addEventListener('click', function() {
+        document.querySelectorAll('.pf-lv-card').forEach(function(el) { el.classList.remove('active'); });
+        card.classList.add('active');
+        showPdf(key, pg);
+      });
+      list.appendChild(card);
+    });
+  }
+
+  function showPdf(key, pg) {
+    document.getElementById('pf-right-empty').style.display = 'none';
+    var viewer = document.getElementById('pf-right-viewer');
+    viewer.style.display = 'flex';
+
+    var f = pfFolders[key];
+    document.getElementById('pf-pdf-title').textContent = f.label + ' — ' + pg.label;
+    document.getElementById('pf-viewer-frame').src = 'pdfdata/' + key + '/' + pg.pdf;
+  }
+
+  // Back to categories
+  document.getElementById('pf-back-btn').addEventListener('click', function() {
+    document.getElementById('pf-view-split').style.display = 'none';
+    document.getElementById('pf-view-cats').style.display = 'block';
+    document.getElementById('pf-viewer-frame').src = '';
+  });
+
+  updateStats();
+  buildTicker();
+  buildCategories();
+})();
+</script>
+<!-- ======== Suraj Code End (ProductForge — All CSS, HTML, JS) ======== -->
+
+<!-- ======== Suraj Code Start (EventsRadar — All CSS, HTML, JS) ======== -->
+<style>
+.er-page{padding:24px;background:#fff;max-width:900px;margin:0 auto;}
+.er-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;}
+.er-title{font-size:36px;font-weight:900;color:rgba(30,5,80,0.8);letter-spacing:-1px;line-height:1;}
+.er-title span{color:rgba(106,13,173,0.75);}
+.er-stats{text-align:right;font-size:11px;color:rgba(76,29,149,0.7);font-family:monospace;}
+.er-stats b{color:rgba(106,13,173,0.8);}
+.er-subtitle{font-size:10px;color:rgba(124,58,237,0.6);letter-spacing:3px;font-weight:600;margin-bottom:20px;}
+
+.er-body{display:flex;gap:24px;}
+.er-col-left{flex:6.5;}
+.er-col-right{flex:3.5;}
+
+/* Covered cards */
+.er-covered-label{font-size:9px;font-weight:700;color:rgba(76,29,149,0.7);letter-spacing:3px;margin-bottom:8px;border-bottom:1px solid rgba(228,223,255,0.6);padding-bottom:4px;}
+.er-covered-row{display:flex;gap:10px;margin-bottom:18px;}
+.er-covered-card{flex:1;background:linear-gradient(135deg,rgba(74,15,153,0.8),rgba(106,13,173,0.75));border-radius:10px;padding:14px;color:#fff;}
+.er-covered-card h4{font-size:14px;font-weight:700;margin:0 0 2px;}
+.er-covered-card p{font-size:10px;color:#d8ccff;margin:0 0 8px;letter-spacing:1px;}
+.er-covered-badge{display:inline-block;font-size:9px;font-weight:700;background:rgba(255,255,255,0.2);border-radius:4px;padding:3px 8px;color:#fff;}
+.er-done-tag{float:right;font-size:9px;color:#d1fae5;font-weight:700;}
+
+/* Upcoming timeline */
+.er-upcoming-label{font-size:9px;font-weight:700;color:rgba(76,29,149,0.7);letter-spacing:3px;margin-bottom:10px;border-bottom:1px solid rgba(228,223,255,0.6);padding-bottom:4px;}
+.er-timeline-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(243,240,255,0.7);}
+.er-timeline-row:last-child{border-bottom:none;}
+.er-tl-date{font-size:12px;font-weight:700;color:rgba(106,13,173,0.75);width:55px;flex-shrink:0;font-family:monospace;}
+.er-tl-date span{display:block;font-size:9px;color:rgba(124,58,237,0.6);font-weight:600;}
+.er-tl-info{flex:1;}
+.er-tl-name{font-size:14px;font-weight:700;color:rgba(30,5,80,0.75);}
+.er-tl-venue{font-size:10px;color:rgba(124,58,237,0.55);font-family:monospace;margin-top:1px;}
+.er-tl-tag{font-size:9px;font-weight:700;color:#fff;padding:3px 10px;border-radius:10px;flex-shrink:0;opacity:0.8;}
+
+/* Products */
+.er-prod-label{font-size:9px;font-weight:700;color:rgba(76,29,149,0.7);letter-spacing:3px;margin-bottom:10px;border-bottom:1px solid rgba(228,223,255,0.6);padding-bottom:4px;}
+.er-prod-cat{font-size:12px;font-weight:700;color:rgba(30,5,80,0.75);margin:14px 0 6px;display:flex;align-items:center;gap:6px;}
+.er-prod-cat:first-of-type{margin-top:0;}
+.er-pills{display:flex;flex-wrap:wrap;gap:6px;}
+.er-pill{font-size:11px;font-weight:600;color:rgba(106,13,173,0.75);background:rgba(245,243,255,0.7);border:1.5px solid rgba(228,223,255,0.6);border-radius:6px;padding:5px 12px;transition:0.15s;}
+.er-pill:hover{background:rgba(237,233,254,0.7);border-color:rgba(196,181,253,0.6);}
+
+/* Field intel */
+.er-intel{background:rgba(30,5,80,0.85);border-radius:10px;padding:16px;margin-top:18px;}
+.er-intel-title{font-size:10px;font-weight:700;color:#c4b5fd;letter-spacing:2px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.er-intel-item{font-size:11px;color:#e0d8ff;margin-bottom:8px;display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.er-intel-item:last-child{margin-bottom:0;}
+.er-intel-dot{color:#fbbf24;flex-shrink:0;font-size:10px;margin-top:2px;}
+
+/* Footer */
+.er-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:10px;border-top:1px solid #e4dfff;}
+.er-footer-left{font-size:9px;color:#7c3aed;letter-spacing:2px;font-weight:600;}
+.er-footer-right{font-size:9px;color:#6A0DAD;font-weight:700;letter-spacing:1px;font-family:monospace;}
+</style>
+
+<div class="page" id="page-er">
+<div class="er-page">
+
+<!-- HEADER -->
+<div class="er-hdr">
+  <div>
+    <div class="er-title">EVENTS <span>RADAR</span></div>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:14px;">
+    <div class="er-stats">
+      YEAR <b>2026</b><br>
+      COVERED <b>2 EVENTS</b><br>
+      UPCOMING <b>5 EVENTS</b><br>
+      VENDORS MAPPED <b>13+</b>
+    </div>
+    <img src="logo-light.webp" alt="HeadsupB2B" style="height:30px;background:rgba(30,5,80,0.85);padding:6px 12px;border-radius:6px;">
+  </div>
+</div>
+<div class="er-subtitle">INFRASTRUCTURE · CONSTRUCTION · ENERGY · LOGISTICS</div>
+
+<div class="er-body">
+
+<!-- LEFT COLUMN -->
+<div class="er-col-left">
+
+<!-- COVERED -->
+<div class="er-covered-label">COVERED</div>
+<div class="er-covered-row">
+  <div class="er-covered-card">
+    <span class="er-done-tag">✓ DONE</span>
+    <h4>Infra Fence Expo</h4>
+    <p>SECURITY · PERIMETER</p>
+    <div class="er-covered-badge">9 vendors mapped</div>
+  </div>
+  <div class="er-covered-card">
+    <span class="er-done-tag">✓ DONE</span>
+    <h4>AceTech</h4>
+    <p>CONSTRUCTION TECH</p>
+    <div class="er-covered-badge">13 manufacturers</div>
+  </div>
+</div>
+
+<!-- UPCOMING -->
+<div class="er-upcoming-label">UPCOMING</div>
+
+<div class="er-timeline-row">
+  <div class="er-tl-date">16<span>APR</span></div>
+  <div class="er-tl-info"><div class="er-tl-name">Bharat Steel</div><div class="er-tl-venue">Bharat Mandapam, New Delhi</div></div>
+  <span class="er-tl-tag" style="background:#6A0DAD;">STEEL</span>
+</div>
+<div class="er-timeline-row">
+  <div class="er-tl-date">29<span>APR</span></div>
+  <div class="er-tl-info"><div class="er-tl-name">Bharat Buildcon</div><div class="er-tl-venue">Yashobhoomi, New Delhi</div></div>
+  <span class="er-tl-tag" style="background:#7c3aed;">BUILD</span>
+</div>
+<div class="er-timeline-row">
+  <div class="er-tl-date">08<span>MAY</span></div>
+  <div class="er-tl-info"><div class="er-tl-name">Bioenergy & Biomaterial Summit</div><div class="er-tl-venue">Yashobhoomi, New Delhi</div></div>
+  <span class="er-tl-tag" style="background:#059669;">ENERGY</span>
+</div>
+<div class="er-timeline-row">
+  <div class="er-tl-date">25<span>JUN</span></div>
+  <div class="er-tl-info"><div class="er-tl-name">India Warehousing Show</div><div class="er-tl-venue">Yashobhoomi, New Delhi</div></div>
+  <span class="er-tl-tag" style="background:#dc2626;">LOGISTICS</span>
+</div>
+<div class="er-timeline-row">
+  <div class="er-tl-date">10<span>SEP</span></div>
+  <div class="er-tl-info"><div class="er-tl-name">Airport Expo</div><div class="er-tl-venue">Yashobhoomi, New Delhi</div></div>
+  <span class="er-tl-tag" style="background:#1d4ed8;">AVIATION</span>
+</div>
+
+</div><!-- /er-col-left -->
+
+<!-- RIGHT COLUMN -->
+<div class="er-col-right">
+
+<!-- PRODUCTS -->
+<div class="er-prod-label">PRODUCTS</div>
+
+<div class="er-prod-cat">🏗️ BUILDING MATERIALS</div>
+<div class="er-pills">
+  <span class="er-pill">TMT Bars</span>
+  <span class="er-pill">Cement</span>
+  <span class="er-pill">Ready Mix</span>
+  <span class="er-pill">Steel</span>
+</div>
+
+<div class="er-prod-cat">🏭 AUTOMATION</div>
+<div class="er-pills">
+  <span class="er-pill">SCADA</span>
+  <span class="er-pill">PLC</span>
+  <span class="er-pill">Sensors</span>
+</div>
+
+<div class="er-prod-cat">☀️ SOLAR</div>
+<div class="er-pills">
+  <span class="er-pill">Solar Panels</span>
+  <span class="er-pill">Inverters</span>
+  <span class="er-pill">Batteries</span>
+</div>
+
+<!-- FIELD INTEL -->
+<div class="er-intel">
+  <div class="er-intel-title">🤝 FIELD INTEL</div>
+  <div class="er-intel-item"><span class="er-intel-dot">▸</span>FRP demand rising — renewables, refineries, coastal infra</div>
+  <div class="er-intel-item"><span class="er-intel-dot">▸</span>Concertina wire driving ₹5–6 Cr revenue for specialists</div>
+  <div class="er-intel-item"><span class="er-intel-dot">▸</span>Smart perimeter (80km fibre) gaining at airports</div>
+  <div class="er-intel-item"><span class="er-intel-dot">▸</span>Key clients: L&T, TATA, NHAI, BRO, Indian Army</div>
+  <div class="er-intel-item"><span class="er-intel-dot">▸</span>Gabion demand peaks post-monsoon — pitch window Aug–Oct</div>
+</div>
+
+</div><!-- /er-col-right -->
+
+</div><!-- /er-body -->
+
+<!-- FOOTER -->
+<div class="er-footer">
+  <div class="er-footer-left">INTERNAL USE · EVENTS & MARKET INTELLIGENCE</div>
+  <div class="er-footer-right">UPDATED: MARCH 2026</div>
+</div>
+
+</div><!-- /er-page -->
+</div><!-- /page-er -->
+<!-- ======== Suraj Code End (EventsRadar — All CSS, HTML, JS) ======== -->
+
+<!-- ======== Suraj Code Start (BuildBoard — All CSS, HTML, JS) ======== -->
+<style>
+.bb-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;padding:14px;}
+.bb-kpi{background:#fff;border:1.5px solid #e4dfff;border-radius:8px;padding:12px;text-align:center;}
+.bb-kpi.hero{background:#1e0550;border-color:#1e0550;}
+.bb-kpi.hero .bb-kpi-v,.bb-kpi.hero .bb-kpi-l{color:#fff;}
+.bb-kpi-ic{font-size:18px;margin-bottom:4px;}
+.bb-kpi-v{font-size:22px;font-weight:700;color:#4c1d95;font-family:'JetBrains Mono',monospace;}
+.bb-kpi-l{font-size:10px;font-weight:700;color:#7c3aed;letter-spacing:1px;margin-top:2px;}
+
+.bb-charts{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px 14px;}
+.bb-chart-box{background:#fff;border:1.5px solid #e4dfff;border-radius:8px;padding:14px;position:relative;height:260px;}
+.bb-chart-title{font-size:11px;font-weight:700;color:#4c1d95;letter-spacing:1px;margin-bottom:8px;}
+
+.bb-team-tabs{display:flex;gap:2px;padding:0 14px;}
+.bb-team-tab{padding:8px 16px;font-size:11px;font-weight:700;color:#7c3aed;cursor:pointer;border:1.5px solid #e4dfff;border-bottom:none;border-radius:8px 8px 0 0;background:#f5f3ff;}
+.bb-team-tab.active{background:#fff;color:#4c1d95;border-color:#c4b5fd;}
+.bb-team-content{background:#fff;border:1.5px solid #c4b5fd;border-radius:0 8px 8px 8px;margin:0 14px 14px;padding:14px;}
+
+.bb-mini-kpis{display:flex;gap:10px;margin-bottom:12px;}
+.bb-mini{background:#f5f3ff;border:1.5px solid #e4dfff;border-radius:6px;padding:8px 14px;text-align:center;flex:1;}
+.bb-mini-v{font-size:20px;font-weight:700;color:#4c1d95;}
+.bb-mini-l{font-size:9px;font-weight:700;color:#7c3aed;letter-spacing:1px;}
+
+.bb-filters{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center;}
+.bb-filters input,.bb-filters select{font-size:11px;padding:6px 10px;border:1.5px solid #e4dfff;border-radius:5px;color:#4c1d95;font-family:Inter,sans-serif;}
+.bb-filters input{flex:1;min-width:150px;}
+.bb-btn{font-size:10px;font-weight:700;padding:6px 12px;border:none;border-radius:5px;cursor:pointer;color:#fff;background:#6d28d9;}
+.bb-btn:hover{background:#5b21b6;}
+
+.bb-table-wrap{overflow-x:auto;max-height:500px;overflow-y:auto;}
+.bb-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px;}
+.bb-table th{background:#2d0a6e;color:#fff;padding:8px 6px;text-align:left;font-size:10px;letter-spacing:0.5px;position:sticky;top:0;z-index:2;}
+.bb-table td{padding:7px 6px;border-bottom:1px solid #ede9ff;color:#4c1d95;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bb-table tr:nth-child(even){background:#f5f3ff;}
+.bb-table tr:hover{background:#ede9fe;}
+.bb-table td[title]{cursor:help;}
+
+.bb-status{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;display:inline-block;}
+.bb-s-contacted{background:#d1fae5;color:#065f46;}
+.bb-s-pending{background:#fef3c7;color:#92400e;}
+.bb-s-in_progress{background:#dbeafe;color:#1e40af;}
+.bb-s-win{background:#d1fae5;color:#065f46;border:1px solid #10b981;}
+.bb-s-loss{background:#fee2e2;color:#991b1b;}
+
+.bb-page-nav{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;}
+.bb-page-btn{font-size:10px;font-weight:700;padding:4px 10px;border:1.5px solid #e4dfff;border-radius:4px;cursor:pointer;background:#fff;color:#6d28d9;}
+.bb-page-btn:hover{background:#f5f3ff;}
+.bb-page-btn.disabled{opacity:0.4;cursor:default;}
+.bb-page-info{font-size:10px;color:#7c3aed;font-weight:600;}
+
+.bb-stakeholder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;padding:14px;}
+.bb-pcard{background:#fff;border:1.5px solid #e4dfff;border-radius:8px;padding:14px;border-top:3px solid #6d28d9;}
+.bb-pcard-name{font-size:14px;font-weight:700;color:#4c1d95;margin-top:6px;}
+.bb-pcard-role{font-size:10px;color:#7c3aed;margin-bottom:8px;}
+.bb-pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.bb-pc-stat{text-align:center;background:#f5f3ff;border-radius:4px;padding:4px;}
+.bb-pc-sv{font-size:14px;font-weight:700;color:#4c1d95;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.bb-pc-sl{font-size:8px;font-weight:700;color:#7c3aed;letter-spacing:0.5px;}
+
+.bb-funnel{padding:14px;}
+.bb-funnel-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.bb-funnel-label{width:130px;text-align:right;font-size:11px;font-weight:600;color:#4c1d95;flex-shrink:0;}
+.bb-funnel-bar{flex:1;background:#ede9fe;border-radius:3px;height:18px;position:relative;overflow:hidden;}
+.bb-funnel-fill{height:100%;border-radius:3px;position:absolute;left:0;top:0;}
+.bb-funnel-num{font-size:11px;font-weight:700;color:#4c1d95;width:40px;flex-shrink:0;}
+</style>
+
+<div class="page" id="page-bb">
+
+<div class="hz"></div>
+<div class="brand-bar" style="justify-content:space-between;">
+  <div>
+    <div class="brand-name">BuildBoard</div>
+    <div class="brand-tag">HEADSUP B2B — INTELLIGENCE HUB · NHAI · INFRASTRUCTURE · SOLAR</div>
+  </div>
+  <div style="display:flex;gap:6px;">
+    <div class="bbadge"><div class="bbadge-v" id="bb-total-proj">0</div><div class="bbadge-l">PROJECTS</div></div>
+    <div class="bbadge"><div class="bbadge-v" id="bb-total-val">0</div><div class="bbadge-l">₹ CR TOTAL</div></div>
+  </div>
+</div>
+<div class="hz2"></div>
+
+<!-- KPI OVERVIEW -->
+<div class="sec-hdr" style="border-top:none;">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="7" width="3" height="6" fill="#6d28d9" rx="1"/><rect x="5.5" y="4" width="3" height="9" fill="#7c3aed" rx="1"/><rect x="10" y="1" width="3" height="12" fill="#4c1d95" rx="1"/></svg>
+  OVERVIEW — ALL TEAMS
+</div>
+<div class="bb-kpi-grid" id="bb-kpis"></div>
+
+<!-- CHARTS -->
+<div class="bb-charts">
+  <div class="bb-chart-box"><div class="bb-chart-title">TEAM VALUE BREAKDOWN (₹ CR)</div><canvas id="bb-chart-bar"></canvas></div>
+  <div class="bb-chart-box"><div class="bb-chart-title">PROJECT DISTRIBUTION BY TEAM</div><canvas id="bb-chart-donut"></canvas></div>
+</div>
+
+<!-- TEAM TABS -->
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" fill="#6d28d9" rx="1"/><rect x="8" y="1" width="5" height="5" fill="#c4b5fd" rx="1"/><rect x="1" y="8" width="5" height="5" fill="#c4b5fd" rx="1"/><rect x="8" y="8" width="5" height="5" fill="#6d28d9" rx="1"/></svg>
+  TEAM DETAILS
+</div>
+<div class="bb-team-tabs" id="bb-team-tabs"></div>
+<div class="bb-team-content" id="bb-team-content"></div>
+
+<!-- STAKEHOLDERS -->
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="3" fill="#6d28d9"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5" fill="#c4b5fd"/></svg>
+  STAKEHOLDER DIVISION
+</div>
+<div class="bb-stakeholder-grid" id="bb-stakeholders"></div>
+
+<!-- FOLLOW-UP FUNNEL -->
+<div class="sec-hdr">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1h12l-4 5v4l-4 3V6L1 1z" fill="#c4b5fd" stroke="#6d28d9" stroke-width="1"/></svg>
+  FOLLOW-UP FUNNEL
+</div>
+<div class="bb-funnel" id="bb-funnel"></div>
+
+</div><!-- /page-bb -->
+
+<script src="buildboard/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var R = BB_DATA.records;
+  var S = BB_DATA.stats;
+  var PAGE_SIZE = 15;
+  var teamPages = {A:1, B:1, D:1};
+  var teamFiltered = {};
+
+  // Header badges
+  document.getElementById('bb-total-proj').textContent = S.totalProjects;
+  document.getElementById('bb-total-val').textContent = Math.round(S.totalValue).toLocaleString();
+
+  // Team helpers
+  function teamRecs(t) { return R.filter(function(r){ return r.team === 'TEAM '+t; }); }
+  function teamVal(t) { var s=0; teamRecs(t).forEach(function(r){ if(r.amount) s+=r.amount; }); return s; }
+  function teamContacted(t) { return teamRecs(t).filter(function(r){ return r.status==='contacted'; }).length; }
+  function fmt(n) { return n >= 1000 ? (n/1000).toFixed(1)+'K' : n.toFixed(1); }
+
+  // KPIs
+  var kpiEl = document.getElementById('bb-kpis');
+  var kpis = [
+    {ic:'🏗️', v:teamRecs('A').length, l:'TEAM A PROJECTS', sub:'₹'+Math.round(teamVal('A'))+' Cr'},
+    {ic:'🏭', v:teamRecs('B').length, l:'TEAM B PROJECTS', sub:'₹'+Math.round(teamVal('B'))+' Cr'},
+    {ic:'☀️', v:teamRecs('D').length, l:'TEAM D PROJECTS', sub:'₹'+Math.round(teamVal('D'))+' Cr'},
+    {ic:'💰', v:'₹'+Math.round(S.totalValue).toLocaleString(), l:'GRAND TOTAL (CR)', hero:true},
+    {ic:'🏛️', v:Object.keys(S.orgCounts).length, l:'UNIQUE ORGS'},
+    {ic:'📞', v:S.statusCounts.contacted||0, l:'TOTAL CONTACTED'},
+    {ic:'📋', v:S.totalProjects, l:'TOTAL RECORDS'},
+    {ic:'📈', v:'₹'+(teamVal('A')/(teamRecs('A').filter(function(r){return r.amount;}).length||1)).toFixed(0), l:'AVG VALUE (A)'}
+  ];
+  kpis.forEach(function(k){
+    var d = document.createElement('div');
+    d.className = 'bb-kpi' + (k.hero?' hero':'');
+    d.innerHTML = '<div class="bb-kpi-ic">'+k.ic+'</div><div class="bb-kpi-v">'+k.v+'</div><div class="bb-kpi-l">'+k.l+'</div>' + (k.sub?'<div style="font-size:10px;color:'+(k.hero?'#c4b5fd':'#7c3aed')+';">'+k.sub+'</div>':'');
+    kpiEl.appendChild(d);
+  });
+
+  // Charts
+  function initCharts() {
+    var barCtx = document.getElementById('bb-chart-bar').getContext('2d');
+    new Chart(barCtx, {
+      type:'bar',
+      data:{labels:['TEAM A','TEAM B','TEAM D'],datasets:[{data:[teamVal('A'),teamVal('B'),teamVal('D')],backgroundColor:['#6d28d9','#3b82f6','#f59e0b'],borderRadius:4}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(29,5,80,.9)'}},scales:{y:{ticks:{color:'#7b70be',font:{size:10}},grid:{color:'rgba(106,13,173,.05)'}},x:{ticks:{color:'#7b70be',font:{size:10}}}}}
+    });
+    var donutCtx = document.getElementById('bb-chart-donut').getContext('2d');
+    new Chart(donutCtx, {
+      type:'doughnut',
+      data:{labels:['TEAM A','TEAM B','TEAM D'],datasets:[{data:[teamRecs('A').length,teamRecs('B').length,teamRecs('D').length],backgroundColor:['#6d28d9','#3b82f6','#f59e0b']}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:'#4c1d95'}},tooltip:{backgroundColor:'rgba(29,5,80,.9)'}}}
+    });
+  }
+
+  // Team tabs
+  var teams = ['A','B','D'];
+  var teamLabels = {A:'🏗️ TEAM A',B:'🏭 TEAM B',D:'☀️ TEAM D'};
+  var tabsEl = document.getElementById('bb-team-tabs');
+  var contentEl = document.getElementById('bb-team-content');
+  var activeTeam = 'A';
+
+  function buildTabs() {
+    tabsEl.innerHTML = '';
+    teams.forEach(function(t){
+      var tab = document.createElement('div');
+      tab.className = 'bb-team-tab' + (t===activeTeam?' active':'');
+      tab.textContent = teamLabels[t];
+      tab.addEventListener('click', function(){ activeTeam=t; buildTabs(); renderTeam(t); });
+      tabsEl.appendChild(tab);
+    });
+  }
+
+  function renderTeam(t) {
+    var recs = teamRecs(t);
+    var val = teamVal(t);
+    var cont = teamContacted(t);
+    teamFiltered[t] = recs;
+    teamPages[t] = 1;
+
+    var html = '<div class="bb-mini-kpis">';
+    html += '<div class="bb-mini"><div class="bb-mini-v">'+recs.length+'</div><div class="bb-mini-l">PROJECTS</div></div>';
+    html += '<div class="bb-mini"><div class="bb-mini-v">₹'+Math.round(val)+'</div><div class="bb-mini-l">TOTAL ₹ CR</div></div>';
+    html += '<div class="bb-mini"><div class="bb-mini-v">'+cont+'</div><div class="bb-mini-l">CONTACTED</div></div>';
+    html += '</div>';
+
+    // Filters
+    html += '<div class="bb-filters">';
+    html += '<input type="text" id="bb-search-'+t+'" placeholder="Search projects..." oninput="bbFilter(\''+t+'\')">';
+
+    // Person dropdown
+    var persons = {};
+    recs.forEach(function(r){ if(r.person) persons[r.person]=1; });
+    html += '<select id="bb-person-'+t+'" onchange="bbFilter(\''+t+'\')"><option value="">All Members</option>';
+    Object.keys(persons).sort().forEach(function(p){ html += '<option value="'+p+'">'+p+'</option>'; });
+    html += '</select>';
+
+    // Status dropdown
+    html += '<select id="bb-status-'+t+'" onchange="bbFilter(\''+t+'\')"><option value="">All Status</option>';
+    ['contacted','pending','in_progress','win','loss'].forEach(function(s){ html += '<option value="'+s+'">'+s+'</option>'; });
+    html += '</select>';
+
+    html += '<button class="bb-btn" onclick="bbExport(\''+t+'\')">CSV Export</button>';
+    html += '</div>';
+
+    // Table
+    html += '<div class="bb-table-wrap"><table class="bb-table"><colgroup>';
+    html += '<col style="width:36px"><col style="width:80px"><col><col style="width:100px"><col style="width:120px"><col style="width:75px"><col style="width:85px"><col style="width:80px">';
+    html += '</colgroup><thead><tr><th>#</th><th>MEMBER</th><th>PROJECT</th><th>LOCATION</th><th>ORGANISATION</th><th>₹ CR</th><th>DATE</th><th>STATUS</th></tr></thead>';
+    html += '<tbody id="bb-tbody-'+t+'"></tbody></table></div>';
+    html += '<div class="bb-page-nav" id="bb-pnav-'+t+'"></div>';
+
+    contentEl.innerHTML = html;
+    renderPage(t);
+  }
+
+  function renderPage(t) {
+    var data = teamFiltered[t] || teamRecs(t);
+    var page = teamPages[t];
+    var start = (page-1)*PAGE_SIZE;
+    var end = Math.min(start+PAGE_SIZE, data.length);
+    var totalPages = Math.ceil(data.length/PAGE_SIZE);
+
+    var tbody = document.getElementById('bb-tbody-'+t);
+    if(!tbody) return;
+    var html = '';
+    for(var i=start;i<end;i++){
+      var r = data[i];
+      var sc = 'bb-s-'+r.status;
+      html += '<tr>';
+      html += '<td>'+r.sno+'</td>';
+      html += '<td title="'+r.person+'">'+r.person+'</td>';
+      html += '<td title="'+(r.project||'').replace(/"/g,'&quot;')+'">'+r.project+'</td>';
+      html += '<td title="'+r.location+'">'+r.location+'</td>';
+      html += '<td title="'+(r.org||'')+'">'+r.org+'</td>';
+      html += '<td>'+(r.amount?r.amount.toFixed(1):'—')+'</td>';
+      html += '<td>'+r.date+'</td>';
+      html += '<td><span class="bb-status '+sc+'">'+r.status+'</span></td>';
+      html += '</tr>';
+    }
+    tbody.innerHTML = html;
+
+    var nav = document.getElementById('bb-pnav-'+t);
+    if(nav){
+      nav.innerHTML = '<div class="bb-page-btn'+(page<=1?' disabled':'')+'" onclick="bbPage(\''+t+'\',-1)">← Prev</div>' +
+        '<div class="bb-page-info">Page '+page+' of '+totalPages+' ('+data.length+' records)</div>' +
+        '<div class="bb-page-btn'+(page>=totalPages?' disabled':'')+'" onclick="bbPage(\''+t+'\',1)">Next →</div>';
+    }
+  }
+
+  // Global functions
+  window.bbFilter = function(t) {
+    var search = (document.getElementById('bb-search-'+t)||{}).value || '';
+    var person = (document.getElementById('bb-person-'+t)||{}).value || '';
+    var status = (document.getElementById('bb-status-'+t)||{}).value || '';
+    search = search.toLowerCase();
+
+    teamFiltered[t] = teamRecs(t).filter(function(r){
+      if(search && r.project.toLowerCase().indexOf(search)===-1 && r.location.toLowerCase().indexOf(search)===-1 && (r.org||'').toLowerCase().indexOf(search)===-1) return false;
+      if(person && r.person !== person) return false;
+      if(status && r.status !== status) return false;
+      return true;
+    });
+    teamPages[t] = 1;
+    renderPage(t);
+  };
+
+  window.bbPage = function(t, dir) {
+    var data = teamFiltered[t] || teamRecs(t);
+    var totalPages = Math.ceil(data.length/PAGE_SIZE);
+    teamPages[t] = Math.max(1, Math.min(totalPages, teamPages[t]+dir));
+    renderPage(t);
+  };
+
+  window.bbExport = function(t) {
+    var data = teamFiltered[t] || teamRecs(t);
+    var csv = 'S.No,Team,Project,Location,Organisation,Amount,Date,Person,Status\n';
+    data.forEach(function(r){
+      csv += [r.sno,r.team,'"'+r.project+'"',r.location,'"'+(r.org||'')+'"',r.amount||'',r.date,r.person,r.status].join(',')+'\n';
+    });
+    var blob = new Blob([csv],{type:'text/csv'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'team_'+t+'_export.csv';
+    a.click();
+  };
+
+  // Stakeholder cards
+  var personColors = {
+    Rizwan:{bg:'#ede9fe',text:'#5b21b6',border:'#7c3aed'},
+    Rishabh:{bg:'#e0e7ff',text:'#3730a3',border:'#4f46e5'},
+    Ravi:{bg:'#fef3c7',text:'#92400e',border:'#f59e0b'},
+    Ritesh:{bg:'#d1fae5',text:'#065f46',border:'#10b981'},
+    Vikram:{bg:'#e0f2fe',text:'#075985',border:'#0ea5e9'},
+    Piyush:{bg:'#f0fdf4',text:'#14532d',border:'#22c55e'},
+    Vipin:{bg:'#dbeafe',text:'#1e40af',border:'#3b82f6'},
+    Dakshiani:{bg:'#fce7f3',text:'#9d174d',border:'#ec4899'}
+  };
+  var personTeam = {Rizwan:'TEAM A',Rishabh:'TEAM A',Ravi:'TEAM A',Ritesh:'TEAM A',Vikram:'TEAM B',Piyush:'TEAM B',Vipin:'TEAM D',Dakshiani:'TEAM D'};
+  var stEl = document.getElementById('bb-stakeholders');
+
+  Object.keys(S.personCounts).forEach(function(p){
+    var c = personColors[p] || {bg:'#f5f3ff',text:'#4c1d95',border:'#6d28d9'};
+    var pRecs = R.filter(function(r){ return r.person===p; });
+    var pVal = 0; pRecs.forEach(function(r){ if(r.amount) pVal+=r.amount; });
+    var pCont = pRecs.filter(function(r){ return r.status==='contacted'; }).length;
+
+    var card = document.createElement('div');
+    card.className = 'bb-pcard';
+    card.style.borderTopColor = c.border;
+    card.innerHTML =
+      '<div style="font-size:24px;">👤</div>' +
+      '<div class="bb-pcard-name" style="color:'+c.text+';">'+p+'</div>' +
+      '<div class="bb-pcard-role">'+(personTeam[p]||'')+'</div>' +
+      '<div class="bb-pc-stats">' +
+        '<div class="bb-pc-stat" style="background:'+c.bg+';"><div class="bb-pc-sv" style="color:'+c.text+';">'+pRecs.length+'</div><div class="bb-pc-sl">PROJECTS</div></div>' +
+        '<div class="bb-pc-stat" style="background:'+c.bg+';"><div class="bb-pc-sv" style="color:'+c.text+';'+(pVal>9999?'font-size:12px;':'')+'">₹'+Math.round(pVal)+'</div><div class="bb-pc-sl">VALUE</div></div>' +
+        '<div class="bb-pc-stat" style="background:'+c.bg+';"><div class="bb-pc-sv" style="color:'+c.text+';">'+pCont+'</div><div class="bb-pc-sl">CONTACTED</div></div>' +
+      '</div>';
+    stEl.appendChild(card);
+  });
+
+  // Funnel
+  var funnelEl = document.getElementById('bb-funnel');
+  var funnelData = [
+    {label:'Total Allocated', count:S.totalProjects, color:'#6d28d9'},
+    {label:'Contacted', count:S.statusCounts.contacted||0, color:'#7c3aed'},
+    {label:'In Progress', count:S.statusCounts.in_progress||0, color:'#3b82f6'},
+    {label:'Win', count:S.statusCounts.win||0, color:'#10b981'},
+    {label:'Not Awarded', count:S.statusCounts.loss||0, color:'#ef4444'}
+  ];
+  var maxF = funnelData[0].count;
+  funnelData.forEach(function(f){
+    var pct = Math.max(2, Math.round((f.count/maxF)*100));
+    funnelEl.innerHTML += '<div class="bb-funnel-row"><div class="bb-funnel-label">'+f.label+'</div><div class="bb-funnel-bar"><div class="bb-funnel-fill" style="width:'+pct+'%;background:'+f.color+';"></div></div><div class="bb-funnel-num">'+f.count+'</div></div>';
+  });
+
+  // Init
+  buildTabs();
+  renderTeam('A');
+  setTimeout(initCharts, 100);
+})();
+</script>
+<!-- ======== Suraj Code End (BuildBoard — All CSS, HTML, JS) ======== -->
+
+</div>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const subs = {
+    ip: 'InfraPulse — Monthly Intelligence Report · April 2026',
+    pf: 'ProductForge — Product Catalogue & Procurement Intelligence',
+    er: 'EventsRadar — Tender Calendar & Bid Tracker',
+    bb: 'BuildBoard — HEADSUP B2B Intelligence Hub'
+  };
+  document.getElementById('nsub').textContent = subs[id];
+}
+
+function ck(el) {
+  el.classList.toggle('done');
+  const all = document.querySelectorAll('#cl .cli').length;
+  const done = document.querySelectorAll('#cl .cli.done').length;
+  const msg = document.getElementById('ckmsg');
+  if (done === all) { msg.textContent = "All deployed — April '26 locked!"; msg.style.color = '#059669'; }
+  else if (done === 0) { msg.textContent = 'Click each item to mark deployed'; msg.style.color = '#a78bfa'; }
+  else { msg.textContent = done + ' of ' + all + ' deployed'; msg.style.color = '#6d28d9'; }
+}
+
+const qd = [{ cat: 'Road Safety', q24: 11.14, q25: 14.79 }, { cat: 'Metals', q24: 6.26, q25: 7.74 }, { cat: 'Renewables', q24: 0, q25: 2.04 }];
+const mx = Math.max(...qd.map(d => Math.max(d.q24, d.q25)));
+const qEl = document.getElementById('qchart');
+qd.forEach(d => {
+  const p24 = Math.round((d.q24 / mx) * 100);
+  const p25 = Math.round((d.q25 / mx) * 100);
+  const isNew = d.q24 === 0;
+  const pct = isNew ? 'INTRODUCED' : '+' + Math.round((d.q25 - d.q24) / d.q24 * 100) + '%';
+  const bc = isNew ? '#92400e' : '#065f46';
+  const bb = isNew ? '#fef3c7' : '#d1fae5';
+  qEl.innerHTML += `<div style="margin-bottom:9px;"><div style="font-size:11px;font-weight:700;color:#4c1d95;margin-bottom:3px;">${d.cat}</div><div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;"><span style="font-size:10px;color:#6d28d9;width:52px;text-align:right;flex-shrink:0;">Q1 FY24</span><div style="flex:1;background:#ede9fe;border-radius:3px;height:12px;position:relative;overflow:hidden;"><div style="width:${p24}%;height:100%;background:#6d28d9;border-radius:3px;position:absolute;"></div></div><span style="font-size:11px;font-weight:700;color:#4c1d95;width:38px;flex-shrink:0;">${d.q24 === 0 ? '—' : 'Rs.' + d.q24}</span></div><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:10px;color:#059669;width:52px;text-align:right;flex-shrink:0;">Q1 FY25</span><div style="flex:1;background:#ede9fe;border-radius:3px;height:12px;position:relative;overflow:hidden;"><div style="width:${p25}%;height:100%;background:#059669;border-radius:3px;position:absolute;"></div></div><span style="font-size:11px;font-weight:700;color:#065f46;width:38px;flex-shrink:0;">Rs.${d.q25}</span><span style="font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;background:${bb};color:${bc};flex-shrink:0;">${pct}</span></div></div>`;
+});
+
+const ticker = document.getElementById('ticker');
+let pos = 0;
+const c2 = ticker.cloneNode(true); c2.id = 't2';
+ticker.parentNode.appendChild(c2);
+const fw = ticker.scrollWidth;
+function step() { pos += 0.5; if (pos >= fw) pos = 0; ticker.style.transform = `translateX(-${pos}px)`; c2.style.transform = `translateX(${fw - pos}px)`; requestAnimationFrame(step); }
+requestAnimationFrame(step);
+
+</script>
